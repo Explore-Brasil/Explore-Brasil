@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from "../Input/index"
+import { useContext } from 'react';
+import { Usercontext } from '../../providers/Usercontext';
 
 interface IRegisterData {
   email: string;
@@ -12,6 +14,8 @@ interface IRegisterData {
 }
 
 const RegisterForm = () => {
+
+  const {registerUser} = useContext(Usercontext)
     
   
     const schema = yup.object({
@@ -44,7 +48,7 @@ const RegisterForm = () => {
     });
   
     return (
-      <form onSubmit={handleSubmit(()=> console.log('cliquei'))}>
+      <form onSubmit={handleSubmit(registerUser)}>
         <Input
           label='Digite seu nome'
           type='text'

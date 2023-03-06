@@ -14,6 +14,7 @@ interface IRegisterData {
     email: string;
     password: string;
     name: string;
+    passwordConfirmation? : string
 }
 
 export const Usercontext = createContext({} as IUserContext)
@@ -23,8 +24,9 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     const navigate = useNavigate()
 
     const registerUser = async (regiterData: IRegisterData) => {
+        delete regiterData.passwordConfirmation
         try {
-            const response = api.post("/user", regiterData)
+            await api.post("/users", regiterData)
             console.log('usuario cadastrado')
             navigate('/register')
         } catch (error) {

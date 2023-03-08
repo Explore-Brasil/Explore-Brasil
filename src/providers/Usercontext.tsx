@@ -73,7 +73,6 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     useEffect(()=> {
         const token = localStorage.getItem('@TOKEN')
         if(!token){
-            navigate('/')
         }
         if(token){
             navigate("/dashboard")

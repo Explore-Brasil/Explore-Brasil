@@ -1,9 +1,10 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import api from "../services/api";
 
 interface IUserContext {
-    registerUser: (regiterData: IRegisterData) => Promise<void>
+    registerUser: (regiterData: IRegisterData) => Promise<void>,
+    logOut: () => void
 }
 
 interface IUserContextProps {
@@ -28,15 +29,29 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         try {
             await api.post("/users", regiterData)
             console.log('usuario cadastrado')
-            navigate('/register')
+            navigate('/login')
         } catch (error) {
             console.log(error)
         }
     }
 
+    const logOut = () => {
+        localStorage.clear()
+        navigate('/')
+    }
+
+    useEffect(()=> {
+        const token = localStorage.getItem("@TOKEN")
+        if(!token){
+            navigate('/')
+        } else {
+            navigate("/dashboard")
+        }
+    }, [])
+
     return (
         <Usercontext.Provider
-            value={{ registerUser }}
+            value={{ registerUser, logOut }}
         >
             {children}
         </Usercontext.Provider>

@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom"
 import api from "../services/api";
 
 interface IUserContext {
-    registerUser: (regiterData: IRegisterData) => Promise<void>,
-    logOut: () => void
+    registerUser: (regiterData: IRegisterData) => Promise<void>
 }
 
 interface IUserContextProps {
@@ -18,17 +17,17 @@ interface IRegisterData {
     passwordConfirmation? : string
 }
 
-interface  IUsers{
+interface IUsers {
     name: string
     email: string
-    password: string
+    passwrdod: string
 }
 
 export const Usercontext = createContext({} as IUserContext)
 
 export const UserProvider = ({ children }: IUserContextProps) => {
 
-    const [user, setUser] = useState(Array<IUsers>)
+    const [users, setusers] = useState(Array<IUsers>)
 
     const navigate = useNavigate()
 
@@ -37,7 +36,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         try {
             await api.post("/users", regiterData)
             console.log('usuario cadastrado')
-            navigate('/login')
+            navigate('/register')
         } catch (error) {
             console.log(error)
         }
@@ -49,17 +48,18 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     }
 
     useEffect(()=> {
-        const token = localStorage.getItem("@TOKEN")
+        const token = localStorage.getItem('@TOKEN')
         if(!token){
             navigate('/')
-        } else {
+        }
+        if(token){
             navigate("/dashboard")
         }
     }, [])
 
     return (
         <Usercontext.Provider
-            value={{ registerUser, logOut }}
+            value={{ registerUser }}
         >
             {children}
         </Usercontext.Provider>

@@ -61,7 +61,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
             navigate('/dashboard')
             console.log('Logado com sucesso ~trocar por toast')
         } catch (error) {
-            console.log('Não foi possivel logar-se ~trocar por toast')
+            console.log(error)
 
         }
     }

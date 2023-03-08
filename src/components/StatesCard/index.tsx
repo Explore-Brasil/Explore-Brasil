@@ -4,7 +4,6 @@ import { StatesContext } from "../../providers/Statescontext"
 
 const StatesCard = () => {
     const { states } = useContext(StatesContext)
-    console.log(states)
     return (
         <>
             {

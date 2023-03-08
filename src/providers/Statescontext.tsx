@@ -2,11 +2,11 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import api from "../services/api";
 
-interface IUserContext {
-
+interface IStatesContext {
+    states: IStates[]
 }
 
-interface IUserContextProps {
+interface IStatesContextProps {
     children: React.ReactNode;
 }
 
@@ -19,9 +19,9 @@ interface IStates {
 }
 
 
-export const StatesContext = createContext({} as IUserContext)
+export const StatesContext = createContext({} as IStatesContext)
 
-export const StatesProvider = ({ children }: IUserContextProps) => {
+export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     const [states, setSates] = useState(Array<IStates>)
 
@@ -39,11 +39,9 @@ export const StatesProvider = ({ children }: IUserContextProps) => {
         RenderStates()
     }, [])
 
-    console.log(states)
-
     return (
         <StatesContext.Provider
-            value={{ }}
+            value={{states}}
         >
             {children}
 

@@ -1,11 +1,13 @@
 import { HeaderComponent } from "../../components/Header-Componet/Header-Component";
+import StatesCard from "../../components/StatesCard";
 
 const DashBoard = () => {
 
     return (
         <>
-        <HeaderComponent/>
+            <HeaderComponent/>
             <h2>Olá Mundo</h2>
+            <StatesCard/>
         </>
         )
 }

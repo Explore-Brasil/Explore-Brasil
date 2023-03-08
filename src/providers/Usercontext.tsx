@@ -46,7 +46,6 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         delete regiterData.passwordConfirmation
         try {
             await api.post("/users", regiterData)
-
             console.log('usuario cadastrado ~trocar por toast')
             navigate('/login')
         } catch (error) {
@@ -58,10 +57,9 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         try {
             const response = await api.post('/users', loginData)
             localStorage.setItem('@TOKEN', response.data.accessToken)
-            localStorage.setItem('@ID', response.data.user.id)
+            localStorage.setItem('@ID', response.data.id)
             navigate('/dashboard')
             console.log('Logado com sucesso ~trocar por toast')
-
         } catch (error) {
             console.log('Não foi possivel logar-se ~trocar por toast')
 

@@ -88,7 +88,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         if (!token) {
             navigate('/')
         }
-        if (token) {
+        if(token) {
             navigate("/dashboard")
         }
     }, [])

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import api from "../services/api";
 
 interface IUserContext {
@@ -80,7 +80,6 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
     return (
         <Usercontext.Provider
-
             value={{ registerUser, loginUser, logOut }}
         >
             {children}

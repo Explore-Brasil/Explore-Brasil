@@ -21,11 +21,25 @@ interface IStates {
 
 export const StatesContext = createContext({} as IUserContext)
 
-export const UserProvider = ({ children }: IUserContextProps) => {
+export const StatesProvider = ({ children }: IUserContextProps) => {
 
     const [states, setSates] = useState(Array<IStates>)
 
     const navigate = useNavigate()
+
+    useEffect(()=> {
+        const RenderStates = async () => {
+            try {
+                const resposnse = await api.get('/states')
+                setSates(resposnse.data)
+                console.log(resposnse)
+            } catch (error) {
+            }
+        }
+        RenderStates()
+    }, [])
+
+    console.log(states)
 
     return (
         <StatesContext.Provider

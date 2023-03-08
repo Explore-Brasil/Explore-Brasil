@@ -13,7 +13,6 @@ export const HeaderComponent = () => {
     const navigate = useNavigate()
     
     const params = useLocation()
-    console.log(params)
     
     
     return (

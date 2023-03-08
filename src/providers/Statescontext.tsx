@@ -19,7 +19,7 @@ interface IStates {
 }
 
 
-export const Usercontext = createContext({} as IUserContext)
+export const StatesContext = createContext({} as IUserContext)
 
 export const UserProvider = ({ children }: IUserContextProps) => {
 
@@ -28,11 +28,11 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     const navigate = useNavigate()
 
     return (
-        <Usercontext.Provider
+        <StatesContext.Provider
             value={{ }}
         >
             {children}
 
-        </Usercontext.Provider>
+        </StatesContext.Provider>
     );
 };

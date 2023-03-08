@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import api from "../services/api";
 
@@ -18,9 +18,17 @@ interface IRegisterData {
     passwordConfirmation? : string
 }
 
+interface  IUsers{
+    name: string
+    email: string
+    password: string
+}
+
 export const Usercontext = createContext({} as IUserContext)
 
 export const UserProvider = ({ children }: IUserContextProps) => {
+
+    const [user, setUser] = useState(Array<IUsers>)
 
     const navigate = useNavigate()
 

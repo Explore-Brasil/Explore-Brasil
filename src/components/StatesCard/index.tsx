@@ -14,7 +14,7 @@ const StatesCard = () => {
                         </div>
                         <h2>{state.name}</h2>
                         <p>{state.info}</p>
-                        <button>Adicionar comentario</button>
+                        <button value={state.id}>Adicionar comentario</button>
                         <button>Ver informações sobre {state.name}</button>
                     </div>
                 )

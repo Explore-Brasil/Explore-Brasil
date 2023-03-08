@@ -62,7 +62,6 @@ export const UserProvider = ({ children }: IUserContextProps) => {
             console.log('Logado com sucesso ~trocar por toast')
         } catch (error) {
             console.log(error)
-
         }
     }
 

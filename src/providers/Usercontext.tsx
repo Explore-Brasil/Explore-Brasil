@@ -16,7 +16,7 @@ interface IRegisterData {
     email: string;
     password: string;
     name: string;
-    passwordConfirmation? : string
+    passwordConfirmation?: string
 }
 
 export interface ILoginUserData {
@@ -24,7 +24,7 @@ export interface ILoginUserData {
     password: string;
 }
 
-interface  IUsers{
+interface IUsers {
     name: string
     email: string
     passwrdod: string
@@ -51,17 +51,16 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     }
 
     const loginUser = async (loginData: ILoginUserData) => {
-        console.log('chamou')
         try {
-            const response = await api.post('/login', loginData)
+            const response = await api.post('/users', loginData)
             localStorage.setItem('@TOKEN', response.data.accessToken)
             localStorage.setItem('@ID', response.data.user.id)
             navigate('/dashboard')
             console.log('Logado com sucesso ~trocar por toast')
-            
+
         } catch (error) {
             console.log('Não foi possivel logar-se ~trocar por toast')
-            
+
         }
     }
 
@@ -70,11 +69,11 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         navigate('/')
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         const token = localStorage.getItem('@TOKEN')
-        if(!token){
+        if (!token) {
         }
-        if(token){
+        if (token) {
             navigate("/dashboard")
         }
     }, [])
@@ -83,9 +82,9 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         <Usercontext.Provider
 
             value={{ registerUser, loginUser, logOut }}
-            >
+        >
             {children}
-            
+
         </Usercontext.Provider>
     );
 };

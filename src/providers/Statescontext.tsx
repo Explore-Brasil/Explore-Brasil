@@ -49,7 +49,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
     const createPost = async (postData: IPosts)=> {
         try {
             const response = await api.post('/comments', postData)
-            setPosts({...response}, response.data)
+            setPosts([...posts, response.data])
         } catch (error) {
             console.log(error)
         }

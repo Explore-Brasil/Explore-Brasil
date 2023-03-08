@@ -57,9 +57,8 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         try {
             const response = await api.post('/login', loginData)
             localStorage.setItem('@TOKEN', response.data.accessToken)
-            localStorage.setItem('@ID', response.data.id)
+            localStorage.setItem('@ID', response.data.user.id)
             navigate('/dashboard')
-            console.log('Logado com sucesso ~trocar por toast')
         } catch (error) {
             console.log(error)
         }

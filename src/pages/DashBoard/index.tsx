@@ -2,13 +2,12 @@ import { HeaderComponent } from "../../components/Header-Componet/Header-Compone
 import StatesCard from "../../components/StatesCard";
 
 const DashBoard = () => {
+  return (
+    <>
+      <HeaderComponent />
 
-    return (
-        <>
-            <HeaderComponent/>
-            <h2>Olá Mundo</h2>
-            <StatesCard/>
-        </>
-        )
-}
-export default DashBoard
+      <StatesCard />
+    </>
+  );
+};
+export default DashBoard;

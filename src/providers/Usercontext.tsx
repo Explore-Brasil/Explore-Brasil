@@ -55,7 +55,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
     const loginUser = async (loginData: ILoginUserData) => {
         try {
-            const response = await api.post('/users', loginData)
+            const response = await api.post('/login', loginData)
             localStorage.setItem('@TOKEN', response.data.accessToken)
             localStorage.setItem('@ID', response.data.id)
             navigate('/dashboard')

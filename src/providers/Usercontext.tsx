@@ -6,6 +6,10 @@ interface IUserContext {
     registerUser: (regiterData: IRegisterData) => Promise<void>;
     loginUser: (loginData: ILoginUserData) => Promise<void>;
     logOut: () => void
+    loginPage: () => void
+    registerPage: () => void
+    mainPage: () => void
+
 }
 
 interface IUserContextProps {
@@ -64,6 +68,16 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         }
     }
 
+    const loginPage = () => {
+        navigate('/login')
+    }
+
+    const registerPage = () => {
+        navigate('/register')
+    }
+    const mainPage = () => {
+        navigate('/')
+    }
     const logOut = () => {
         localStorage.clear()
         navigate('/')
@@ -80,7 +94,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
     return (
         <Usercontext.Provider
-            value={{ registerUser, loginUser, logOut }}
+            value={{ registerUser, loginUser, logOut, loginPage, registerPage, mainPage }}
         >
             {children}
 

@@ -10,6 +10,8 @@ interface IUserContext {
   registerPage: () => void;
   mainPage: () => void;
   user: IUser | undefined;
+  users: IUsers[] | null;
+  getUserName: () => Promise<any>
 }
 
 interface IUserContextProps {
@@ -29,6 +31,8 @@ export interface ILoginUserData {
 }
 
 interface IUser {
+  id: number
+  name: string;
   email: string;
   id: number;
   name: string;
@@ -100,6 +104,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     return selectedUser.name;
   };
 
+
   return (
     <Usercontext.Provider
       value={{
@@ -110,6 +115,8 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         registerPage,
         mainPage,
         user,
+        users,
+        getUserName
       }}
     >
       {children}

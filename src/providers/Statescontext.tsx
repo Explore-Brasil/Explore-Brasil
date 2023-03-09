@@ -21,7 +21,7 @@ interface IStates {
 }
 
 interface IPosts {
-    id: number
+    id?: string | undefined;
     user: string
     title: string
     comment: string

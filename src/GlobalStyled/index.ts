@@ -8,6 +8,9 @@ const GlobalStyled = createGlobalStyle`
         font-family: "Montserrat", sans-serif;
         
     }
+    button{
+        cursor: pointer;
+    }
 `;
 
 export default GlobalStyled;

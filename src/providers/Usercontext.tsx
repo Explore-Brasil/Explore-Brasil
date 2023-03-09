@@ -79,6 +79,17 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         navigate('/')
     }
 
+    const getUserName = async () => {
+
+        const userId = localStorage.getItem('@ID')        
+        const allUsers = await api.get('/users')    
+        const selectedUser = allUsers.data.find(user => user.id === parseInt(userId));
+        
+        
+        return selectedUser.name
+    }
+
+
     // useEffect(() => {
     //     const token = localStorage.getItem('@TOKEN')
     //     if (!token) {
@@ -91,7 +102,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
     return (
         <Usercontext.Provider
-            value={{ registerUser, loginUser, logOut, loginPage, registerPage, mainPage }}
+            value={{ registerUser, loginUser, logOut, loginPage, registerPage, mainPage, getUserName }}
         >
             {children}
 

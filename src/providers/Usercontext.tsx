@@ -9,6 +9,7 @@ interface IUserContext {
   loginPage: () => void;
   registerPage: () => void;
   mainPage: () => void;
+  user: IUser | undefined;
   users: IUsers[] | null;
   getUserName: () => Promise<any>
 }
@@ -29,17 +30,18 @@ export interface ILoginUserData {
   password: string;
 }
 
-interface IUsers {
+interface IUser {
   id: number
   name: string;
   email: string;
-  password: string;
+  id: number;
+  name: string;
 }
 
 export const Usercontext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserContextProps) => {
-  const [users, setusers] = useState(Array<IUsers>);
+  const [user, setUser] = useState<IUser>();
 
   const navigate = useNavigate();
 
@@ -60,11 +62,11 @@ export const UserProvider = ({ children }: IUserContextProps) => {
       const response = await api.post("/login", loginData);
       localStorage.setItem("@TOKEN", response.data.accessToken);
       localStorage.setItem("@ID", response.data.user.id);
+      setUser(response.data.user);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const loginPage = () => {
@@ -82,26 +84,25 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     navigate("/");
   };
 
-    //   useEffect(() => {
-    //     const token = localStorage.getItem('@TOKEN')
-    //     if (!token) {
-    //         navigate('/')
-    //     }
-    //     if(token) {
-    //         navigate("/dashboard")
-    //     }
-    // }, [])
+  // useEffect(() => {
+  //     const token = localStorage.getItem('@TOKEN')
+  //     if (!token) {
+  //         navigate('/')
+  //     }
+  //     if(token) {
+  //         navigate("/dashboard")
+  //     }
+  // }, [])
 
-    const getUserName = async () => {
+  const getUserName = async () => {
+    const userId = localStorage.getItem("@ID");
+    const allUsers = await api.get("/users");
+    const selectedUser = allUsers.data.find(
+      (user) => user.id === parseInt(userId)
+    );
 
-        const userId = localStorage.getItem('@ID')        
-        const allUsers = await api.get('/users')    
-        const selectedUser = allUsers.data.find((user) => user.id === parseInt(userId));
-        
-        
-        return selectedUser.name
-    }
-
+    return selectedUser.name;
+  };
 
 
   return (
@@ -113,6 +114,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         loginPage,
         registerPage,
         mainPage,
+        user,
         users,
         getUserName
       }}
@@ -121,5 +123,3 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     </Usercontext.Provider>
   );
 };
-
-

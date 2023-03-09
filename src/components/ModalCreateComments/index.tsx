@@ -11,16 +11,14 @@ const ModalCreateComment = ({ stateId }) => {
     return (
         <StyledDivModal>
             <div>
-                <div>
-                    <button type="button" onClick={() => setModalIsOpen(false)}>X</button>
-                </div>
-                <div>
+                <button type="button" onClick={() => setModalIsOpen(false)}>X</button>
 
-                    <h2>Adicione informações sobre suas viagens, comentarios sobre lugares</h2>
-                    <p>Você é livre para compartilhar com a comunidade</p>
-                </div>
+                <h2>Adicione informações sobre suas viagens, comentarios sobre lugares</h2>
+                <p>Você é livre para compartilhar com a comunidade</p>
             </div>
-            <CreateComment statesId={stateId} />
+            <div>
+                <CreateComment statesId={stateId} />
+            </div>
         </StyledDivModal>
     )
 }

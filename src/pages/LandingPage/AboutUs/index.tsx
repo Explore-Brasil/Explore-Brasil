@@ -3,17 +3,21 @@ const AboutUs = () => {
     <div className="aboutUs__wrapper">
       <h1>Quem somos</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc
-        nisl, ultrices vitae sagittis ac, gravida ac augue. Proin nisl augue,
-        ultrices sed finibus ut, egestas at ipsum. Sed vel tortor et ipsum
-        tincidunt egestas. Suspendisse eget nunc at augue volutpat consectetur.
-        Curabitur vehicula magna eget lobortis congue. Vestibulum sagittis
-        pretium nisl fermentum accumsan. Aenean a mattis sapien. Donec tempor
-        nulla et convallis varius. Orci varius natoque penatibus et magnis dis
-        parturient montes, nascetur ridiculus mus. Phasellus id ipsum nec dolor
-        dapibus mattis. Morbi varius, tortor ac placerat placerat, nunc metus
-        condimentum enim, et faucibus dui lacus ac augue. Duis vel sapien non
-        libero lacinia pellentesque. Pellentesque tristique mattis mauris.
+        A Explore Brasil é uma aplicação web que oferece informações turísticas
+        sobre diversos destinos do Brasil. Com ela, os usuários podem pesquisar
+        por região, cidade ou atração turística e encontrar informações
+        atualizadas sobre pontos turísticos, atividades, hotéis, restaurantes e
+        transporte. Além disso, a aplicação disponibiliza avaliações de outros
+        viajantes e fotos dos destinos, facilitando a escolha do destino ideal.
+        <br></br>
+        <br></br>A Explore Brasil traz um banco de dados completo e atualizado
+        com informações turísticas sobre o Brasil feito por usuários para
+        usuários, incluindo atrações turísticas, hospedagem, gastronomia e muito
+        mais. Além disso, a aplicação conta com avaliações de outros usuários
+        que visitaram os locais, trazendo mais confiabilidade e segurança na
+        hora de escolher onde ir. Com uma interface simples e intuitiva, o
+        usuário pode facilmente pesquisar e encontrar as informações que precisa
+        para planejar a sua viagem de maneira eficiente e segura.
       </p>
     </div>
   );

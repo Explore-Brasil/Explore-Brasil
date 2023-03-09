@@ -47,6 +47,8 @@ const StatesCard = () => {
       {
             modalIsOpen && <ModalCreateComment stateId={modalState}/>
           }
+
+          
     </StyledUl>
       </>
   );

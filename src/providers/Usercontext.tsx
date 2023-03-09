@@ -79,15 +79,15 @@ export const UserProvider = ({ children }: IUserContextProps) => {
         navigate('/')
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem('@TOKEN')
-        if (!token) {
-            navigate('/')
-        }
-        if(token) {
-            navigate("/dashboard")
-        }
-    }, [])
+    // useEffect(() => {
+    //     const token = localStorage.getItem('@TOKEN')
+    //     if (!token) {
+    //         navigate('/')
+    //     }
+    //     if(token) {
+    //         navigate("/dashboard")
+    //     }
+    // }, [])
 
     return (
         <Usercontext.Provider

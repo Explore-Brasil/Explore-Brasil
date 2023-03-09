@@ -5,8 +5,15 @@ import Input from "../Input";
 import * as yup from "yup";
 import { ILoginUserData, Usercontext } from "../../providers/Usercontext";
 import { useContext } from "react";
+<<<<<<< HEAD
+import { LoginFormStyles } from "./styles";
+
+
+
+=======
 import { StyledLoginForm } from "./styles";
 import image from "../../assets/Logo_Explore_Br-registerPage.png";
+>>>>>>> 9553b821617f78a216beaa48e562e3ec2da11467
 
 const schema = yup.object({
   email: yup
@@ -47,6 +54,36 @@ export const LoginForm = () => {
           ></Input>
         </div>
 
+<<<<<<< HEAD
+      
+
+
+
+    return (
+        <LoginFormStyles onSubmit={handleSubmit(loginUser)}>
+
+            <div className="upperPart">
+                <span>Faça seu login</span>
+                <Input  label={'Email'} type={'text'} message={errors.email?.message} {...register('email')} ></Input>
+                <Input message={errors.password?.message} label={'Senha'} type={'password'} {...register('password')}></Input>
+
+            </div>
+
+            <div className="lowerPart">
+                <button type="submit">Entrar</button>
+                <span>Ainda não tem conta?</span>
+                <Link to="/register" >Registrar-se agora</Link>
+            </div>
+
+        </LoginFormStyles>
+        
+
+
+        
+    )
+
+}
+=======
         <div className="lowerPart">
           <button type="submit">Entrar</button>
           <span>Ainda não tem conta?</span>
@@ -56,3 +93,4 @@ export const LoginForm = () => {
     </StyledLoginForm>
   );
 };
+>>>>>>> 9553b821617f78a216beaa48e562e3ec2da11467

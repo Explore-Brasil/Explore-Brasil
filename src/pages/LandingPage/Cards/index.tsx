@@ -7,10 +7,10 @@ const Cards = () => {
           <p>Petrópolis</p>{" "}
         </div>
         <div className="card2">
-          <p> Porto de Galinhas </p>
+          <p>Rio de Janeiro</p>
         </div>
         <div className="card3">
-          <p> Rio de Janeiro </p>
+          <p> Porto de Galinhas </p>
         </div>
       </div>
     </div>

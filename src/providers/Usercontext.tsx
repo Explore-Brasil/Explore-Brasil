@@ -80,6 +80,27 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     navigate("/");
   };
 
+      // useEffect(() => {
+    //     const token = localStorage.getItem('@TOKEN')
+    //     if (!token) {
+    //         navigate('/')
+    //     }
+    //     if(token) {
+    //         navigate("/dashboard")
+    //     }
+    // }, [])
+
+    const getUserName = async () => {
+
+        const userId = localStorage.getItem('@ID')        
+        const allUsers = await api.get('/users')    
+        const selectedUser = allUsers.data.find(user => user.id === parseInt(userId));
+        
+        
+        return selectedUser.name
+    }
+
+
 
   return (
     <Usercontext.Provider
@@ -98,34 +119,4 @@ export const UserProvider = ({ children }: IUserContextProps) => {
   );
 };
 
-    const getUserName = async () => {
-
-        const userId = localStorage.getItem('@ID')        
-        const allUsers = await api.get('/users')    
-        const selectedUser = allUsers.data.find(user => user.id === parseInt(userId));
-        
-        
-        return selectedUser.name
-    }
-
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem('@TOKEN')
-    //     if (!token) {
-    //         navigate('/')
-    //     }
-    //     if(token) {
-    //         navigate("/dashboard")
-    //     }
-    // }, [])
-
-    return (
-        <Usercontext.Provider
-            value={{ registerUser, loginUser, logOut, loginPage, registerPage, mainPage, getUserName }}
-        >
-            {children}
-
-        </Usercontext.Provider>
-    );
-};
 

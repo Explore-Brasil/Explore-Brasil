@@ -5,7 +5,6 @@ const DashBoard = () => {
   return (
     <>
       <HeaderComponent />
-
       <StatesCard />
     </>
   );

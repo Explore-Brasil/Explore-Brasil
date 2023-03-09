@@ -3,13 +3,12 @@ import { StatesContext } from "../../providers/Statescontext";
 import StyledUl from "./styles";
 
 const StatesCard = () => {
-
   const { states } = useContext(StatesContext);
   console.log(states);
   return (
     <StyledUl>
       {states.map((state) => (
-        <li>
+        <li key={state.id}>
           <div className="img__wrapper">
             <img src={state.img} alt={state.name} />
           </div>

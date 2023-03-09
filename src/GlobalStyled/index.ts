@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { createGlobalStyle } from "styled-components"
-=======
 import { createGlobalStyle } from "styled-components";
->>>>>>> 9553b821617f78a216beaa48e562e3ec2da11467
 
 const GlobalStyled = createGlobalStyle`
     * {

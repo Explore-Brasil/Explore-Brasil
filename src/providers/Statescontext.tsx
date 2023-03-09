@@ -6,7 +6,9 @@ interface IStatesContext {
     createPost: (postData: IPosts) => Promise<void>
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     modalIsOpen: boolean
-
+    comments: IComments[]
+    setComments: React.Dispatch<React.SetStateAction<IComments[]>>
+    renderAllPosts:  (stateId: number) => Promise<void>
 }
 
 interface IStatesContextProps {

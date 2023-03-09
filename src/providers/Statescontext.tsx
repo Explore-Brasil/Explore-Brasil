@@ -65,7 +65,13 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
         }
     }
 
-    
+    const renderAllPosts = async () => {
+        try {
+            const response = await api.get("/comments")
+        } catch (error) {
+            
+        }
+    }
 
 
     return (

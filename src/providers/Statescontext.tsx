@@ -46,8 +46,6 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
         RenderStates()
     }, [])
 
-<<<<<<< HEAD
-=======
     const createPost = async (postData: IPosts)=> {
         try {
             const response = await api.post('/comments', postData)
@@ -57,7 +55,6 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
         }
     }
 
->>>>>>> 9553b821617f78a216beaa48e562e3ec2da11467
     return (
         <StatesContext.Provider
             value={{states, createPost}}

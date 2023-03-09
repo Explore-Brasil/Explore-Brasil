@@ -96,7 +96,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
         const userId = localStorage.getItem('@ID')        
         const allUsers = await api.get('/users')    
-        const selectedUser = allUsers.data.find((user: IUsers) => user.id === parseInt(userId:));
+        const selectedUser = allUsers.data.find((user) => user.id === parseInt(userId));
         
         
         return selectedUser.name

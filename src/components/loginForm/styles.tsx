@@ -30,10 +30,16 @@ export const StyledLoginForm = styled.main`
     align-self: center;
   }
 
+  .upperPart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .lowerPart {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 0.7rem;
 
     button {
       background-color: #4ec4ae;
@@ -42,6 +48,7 @@ export const StyledLoginForm = styled.main`
       border: none;
       width: 100%;
       padding: 5px 10px;
+      margin-top: 13px;
     }
 
     button:hover {

@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { StatesContext } from "../../providers/Statescontext";
 import StyledUl from "./styles";
 import ModalCreateComment from "../ModalCreateComments"
+import { UsersComments } from "../showComments";
 
 const StatesCard = () => {
-  const { states } = useContext(StatesContext);
+  const { states, renderAllPosts } = useContext(StatesContext);
   const {modalIsOpen, setModalIsOpen} = useContext(StatesContext)
   const [modalState, setModalState] = useState(null)
 
@@ -21,6 +22,7 @@ const StatesCard = () => {
 
   return (
       <>
+      <UsersComments />
     <StyledUl>
       {states.map((state) => (
         <li key={state.id}>
@@ -38,7 +40,10 @@ const StatesCard = () => {
                 setModalState(state.id)
                 findstate(event)
                 }}>Adicionar comentário</button>
-              <button>Ver informações sobre {state.name}</button>
+              <button id={(parseInt(state.id))} onClick={(event) => {
+                renderAllPosts(parseInt(event.target.id))
+                console.log('click')
+              }}>Ver informações sobre {state.name}</button>
             </div>
           </div>
           
@@ -46,7 +51,10 @@ const StatesCard = () => {
       ))}
       {
             modalIsOpen && <ModalCreateComment stateId={modalState}/>
+          
           }
+
+          
 
           
     </StyledUl>

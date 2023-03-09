@@ -10,10 +10,10 @@ import {
 } from "react-router-dom";
 
 export const HeaderComponent = () => {
-  const { loginPage, registerPage, mainPage, logOut, users } =
+  const { loginPage, registerPage, mainPage, logOut, user } =
     useContext(Usercontext);
-  const user = localStorage.getItem("@ID");
-  const userName = localStorage.getItem("@USER");
+  // const user = localStorage.getItem("@ID");
+  // const userName = localStorage.getItem("@USER");
   const navigate = useNavigate();
   const params = useLocation();
 
@@ -25,7 +25,7 @@ export const HeaderComponent = () => {
       <div className="div-login-register">
         {params.pathname === "/dashboard" && (
           <>
-            <h3>Bem vindo {userName ? `,${userName}` : "de volta."}</h3>
+            <h3>Bem vindo, {user?.name}</h3>
             <button type="button" onClick={logOut}>
               LogOut
             </button>

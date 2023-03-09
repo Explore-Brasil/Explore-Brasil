@@ -31,15 +31,13 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
   useEffect(() => {
     async function fetchData() {
       const tempName = await getUserName();
-      console.log(tempName)
       setUserName(tempName);
-      //   console.log(tempName, 'tempname')
     }
     fetchData();
   }, []);
 
 
-  const commentFunction = (data: ICreateCommentData) => {
+  const commentFunction = (data: ICreateCommentData)  => {
     const imageRegex = /\.(jpeg|jpg|gif|png|svg)$/;
     const imgOutput = imageRegex.test(data.img)
     const user = localStorage.getItem('@ID')
@@ -50,10 +48,11 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
 
     if (data.title == '' || data.description == '') {
-      console.log('título ou descricão nao podem estar vazios caralho ~substituir por toast')
+      console.log('título ou descricão nao podem estar vazios ~substituir por toast')
     } else {
       createPost({ ...data, statesId: statesId, user: userName, avaliation: rating, userId: user })
       setModalIsOpen(false)
+      console.log('colocar toast de sucesso e de falha')
     }
 
 

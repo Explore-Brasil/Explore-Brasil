@@ -60,6 +60,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
       localStorage.setItem("@TOKEN", response.data.accessToken);
       localStorage.setItem("@ID", response.data.user.id);
       setUser(response.data.user);
+      console.log('colocar toast de sucesso e de erro')
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
@@ -81,15 +82,15 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     navigate("/");
   };
 
-  // useEffect(() => {
-  //     const token = localStorage.getItem('@TOKEN')
-  //     if (!token) {
-  //         navigate('/')
-  //     }
-  //     if(token) {
-  //         navigate("/dashboard")
-  //     }
-  // }, [])
+  useEffect(() => {
+    const token = localStorage.getItem('@TOKEN')
+    if (!token) {
+      navigate('/')
+    }
+    if (token) {
+      navigate("/dashboard")
+    }
+  }, [])
 
   const getUserName = async () => {
     const userId = localStorage.getItem("@ID");

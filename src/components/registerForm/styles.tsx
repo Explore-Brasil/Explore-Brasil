@@ -17,6 +17,7 @@ export const StyledRegisterForm = styled.main`
     border: #bdbdbd 1px solid;
     padding: 30px;
     border-radius: 10px;
+    gap: 10px;
   }
 
   .form__wrapper {

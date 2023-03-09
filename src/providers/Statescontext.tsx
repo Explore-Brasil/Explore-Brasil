@@ -21,13 +21,14 @@ interface IStates {
 }
 
 interface IPosts {
-    id: number
+    id?: string | undefined;
     user: string
     title: string
     comment: string
     img: string
     statesId: number
     avaliation: number
+    userId: string 
 }
 
 interface IComments {

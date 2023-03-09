@@ -4,14 +4,17 @@ import StyledUl from "./styles";
 import ModalCreateComment from "../ModalCreateComments"
 import { UsersComments } from "../showComments";
 
+interface IEventprops extends MouseEvent{
+  target: HTMLInputElement
+}
+
 const StatesCard = () => {
   const { states, renderAllPosts } = useContext(StatesContext);
   const {modalIsOpen, setModalIsOpen} = useContext(StatesContext)
-  const [modalState, setModalState] = useState(null)
+  const [modalState, setModalState] = useState(0)
 
-  const findstate = (event) => {
+  const findstate = (event: IEventprops) => {
     const stateFound = states.find((state) => state.id === +event.target.id )
-    console.log(stateFound, 'statefound')
     if(stateFound){
       setModalIsOpen(true)
       return
@@ -54,9 +57,13 @@ const StatesCard = () => {
           
           }
 
+<<<<<<< HEAD
+
+=======
           
 
           
+>>>>>>> origin
     </StyledUl>
       </>
   );

@@ -28,6 +28,7 @@ interface IPosts {
     img: string
     statesId: number
     avaliation: number
+    userId: string 
 }
 
 interface IComments {

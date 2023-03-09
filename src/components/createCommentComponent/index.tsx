@@ -1,13 +1,22 @@
 import { Rating } from 'react-simple-star-rating'
 import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import api from "../../services/api"
 import { StatesContext } from '../../providers/Statescontext'
 import { Usercontext } from '../../providers/Usercontext'
+interface ICreateCommentProps {
+  statesId: number;
+  }
+  
+  interface ICreateCommentData {
+  title: string;
+  comment: string;
+  img: string;
+  description: string
+  userId: string
+  }
 
 
-
-export const CreateComment = ({ statesId }) => {
+export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -30,7 +39,7 @@ export const CreateComment = ({ statesId }) => {
   }, []);
 
 
-  const commentFunction = (data) => {
+  const commentFunction = (data: ICreateCommentData) => {
     const imageRegex = /\.(jpeg|jpg|gif|png|svg)$/;
     const imgOutput = imageRegex.test(data.img)
     const user = localStorage.getItem('@ID')
@@ -43,18 +52,14 @@ export const CreateComment = ({ statesId }) => {
     if (data.title == '' || data.description == '') {
       console.log('título ou descricão nao podem estar vazios caralho ~substituir por toast')
     } else {
-
-      console.log({ ...data, statesId: statesId, user: userName, avaliation: rating, userId: user })
       createPost({ ...data, statesId: statesId, user: userName, avaliation: rating, userId: user })
       setModalIsOpen(false)
     }
 
 
   }
-
-  const setRatingFunction = (data) => {
+  const setRatingFunction = (data: number) => {
     setRating(data)
-    // console.log(rating)
   }
 
 

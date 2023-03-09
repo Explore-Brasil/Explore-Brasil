@@ -4,8 +4,11 @@ import { StatesContext } from "../../providers/Statescontext"
 import { CreateComment } from "../createCommentComponent"
 import StyledDivModal from "./styles"
 
+interface ModalCreateCommentProps {
+    stateId: number;
+  }
 
-const ModalCreateComment = ({ stateId }) => {
+const ModalCreateComment = ({ stateId } : ModalCreateCommentProps) => {
     const { setModalIsOpen } = useContext(StatesContext)
 
     return (

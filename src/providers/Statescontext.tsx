@@ -4,6 +4,9 @@ import api from "../services/api";
 interface IStatesContext {
     states: IStates[]
     createPost: (postData: IPosts) => Promise<void>
+    setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+    modalIsOpen: boolean
+
 }
 
 interface IStatesContextProps {
@@ -34,6 +37,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     const [states, setSates] = useState(Array<IStates>)
     const [posts, setPosts] = useState(Array<IPosts>)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     useEffect(()=> {
         const RenderStates = async () => {
@@ -66,7 +70,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     return (
         <StatesContext.Provider
-            value={{states, createPost}}
+            value={{states, createPost, setModalIsOpen, modalIsOpen}}
         >
             {children}
 

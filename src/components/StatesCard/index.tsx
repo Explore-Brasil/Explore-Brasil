@@ -3,6 +3,7 @@ import { StatesContext } from "../../providers/Statescontext";
 import StyledUl from "./styles";
 
 const StatesCard = () => {
+
   const { states } = useContext(StatesContext);
   console.log(states);
   return (

@@ -1,15 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import api from "../services/api";
 
-interface IUserContext {
-
+interface IStatesContext {
+    states: IStates[]
+    createPost: (postData: IPosts) => Promise<void>
 }
 
-interface IUserContextProps {
+interface IStatesContextProps {
     children: React.ReactNode;
 }
-
 
 interface IStates {
     name: string
@@ -18,30 +17,50 @@ interface IStates {
     img: string
 }
 
+interface IPosts{
+    id: number
+    user: string
+    title: string
+    comment: string
+    img: string
+    statesId: number
+    avaliation: number
+}
 
-export const StatesContext = createContext({} as IUserContext)
 
-export const StatesProvider = ({ children }: IUserContextProps) => {
+export const StatesContext = createContext({} as IStatesContext)
+
+export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     const [states, setSates] = useState(Array<IStates>)
-
-    const navigate = useNavigate()
+    const [posts, setPosts] = useState(Array<IPosts>)
 
     useEffect(()=> {
         const RenderStates = async () => {
             try {
                 const resposnse = await api.get('/states')
                 setSates(resposnse.data)
-                console.log(resposnse)
             } catch (error) {
             }
         }
         RenderStates()
     }, [])
 
+<<<<<<< HEAD
+=======
+    const createPost = async (postData: IPosts)=> {
+        try {
+            const response = await api.post('/comments', postData)
+            setPosts([...posts, response.data])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+>>>>>>> 9553b821617f78a216beaa48e562e3ec2da11467
     return (
         <StatesContext.Provider
-            value={{ }}
+            value={{states, createPost}}
         >
             {children}
 

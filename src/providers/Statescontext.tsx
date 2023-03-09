@@ -78,9 +78,12 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
     }
 
     const renderAllPosts = async (stateId:number) => {
+        console.log('chamou render all')
+        console.log(stateId,typeof stateId, 'stateID é isso ai')
         try {
           const response = await api.get("/comments");
           const filteredComments = response.data.filter((comment: IComments) => comment.statesId === stateId);
+          console.log(filteredComments)
           setComments(filteredComments);
         } catch (error) {
           console.log(error);
@@ -90,7 +93,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     return (
         <StatesContext.Provider
-            value={{ states, createPost, setModalIsOpen, modalIsOpen }}
+            value={{ states, createPost, setModalIsOpen, modalIsOpen, comments, setComments, renderAllPosts }}
         >
             {children}
 

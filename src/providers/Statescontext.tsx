@@ -39,8 +39,6 @@ export const StatesProvider = ({ children }: IUserContextProps) => {
         RenderStates()
     }, [])
 
-    console.log(states)
-
     return (
         <StatesContext.Provider
             value={{ }}

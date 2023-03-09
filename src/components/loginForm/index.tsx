@@ -5,6 +5,7 @@ import Input from "../Input"
 import * as yup from 'yup'
 import { ILoginUserData, Usercontext } from "../../providers/Usercontext";
 import { useContext } from "react";
+import { LoginFormStyles } from "./styles";
 
 
 
@@ -29,7 +30,7 @@ export const LoginForm = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(loginUser)}>
+        <LoginFormStyles onSubmit={handleSubmit(loginUser)}>
 
             <div className="upperPart">
                 <span>Faça seu login</span>
@@ -44,7 +45,11 @@ export const LoginForm = () => {
                 <Link to="/register" >Registrar-se agora</Link>
             </div>
 
-        </form>
+        </LoginFormStyles>
+        
+
+
+        
     )
 
 }

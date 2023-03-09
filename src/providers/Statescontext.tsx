@@ -47,13 +47,20 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
     }, [])
 
     const createPost = async (postData: IPosts)=> {
+        const token = localStorage.getItem('@TOKEN')
         try {
-            const response = await api.post('/comments', postData)
+            const response = await api.post('/comments', postData, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
             setPosts([...posts, response.data])
+            console.log('comentário criado com sucesso ~inserir toast')
         } catch (error) {
             console.log(error)
         }
     }
+
 
     return (
         <StatesContext.Provider

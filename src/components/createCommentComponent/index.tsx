@@ -1,30 +1,28 @@
 import { Rating } from 'react-simple-star-rating'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import api from "../../services/api"
+import { StatesContext } from '../../providers/Statescontext'
+import { Usercontext } from '../../providers/Usercontext'
 
 
 
-export const CreateComment = ({stateID}) => {
+export const CreateComment = ({statesId}) => {
     
     const {register, handleSubmit, formState: {errors}} = useForm()
+
+    const {createPost} = useContext(StatesContext)
+    const {getUserName} = useContext(Usercontext)
     
     
     const [userName, setUserName] = useState('')
     const [rating, setRating] = useState(5)
     
-    const getUserName = async () => {
-        
-        const userId = localStorage.getItem('@ID')        
-        const allUsers = await api.get('/users')    
-        const selectedUser = allUsers.data.find(user => user.id === parseInt(userId));
-        
-        return selectedUser.name
-    }
-
+    
     useEffect(() => {
         async function fetchData() {
           const tempName = await getUserName();
+          console.log(tempName)
           setUserName(tempName);
         //   console.log(tempName, 'tempname')
         }
@@ -32,9 +30,10 @@ export const CreateComment = ({stateID}) => {
       }, []);
 
 
-      const testFunction = (data) => {
+      const commentFunction = (data) => {
         const imageRegex = /\.(jpeg|jpg|gif|png|svg)$/;
         const imgOutput = imageRegex.test(data.img)
+        const user = localStorage.getItem('@ID')
         if(imgOutput === false && data.img !== '') {
             console.log('imagem não valida ~subtituir por toast')
             return
@@ -45,7 +44,8 @@ export const CreateComment = ({stateID}) => {
               console.log('título ou descricão nao podem estar vazios caralho ~substituir por toast')
             } else {
 
-                console.log({...data, stateID: stateID, name: userName, rating: rating})
+                console.log({...data, statesId: statesId, user: userName, avaliation: rating, userId: user})
+                createPost({...data, statesId: statesId, user: userName, avaliation: rating, userId: user})
             }
 
 
@@ -59,14 +59,14 @@ export const CreateComment = ({stateID}) => {
 
 
     return (
-        <form onSubmit={handleSubmit(testFunction)}>
+        <form onSubmit={handleSubmit(commentFunction)}>
             <div className="setCommentHeader">
                 {userName != '' ? <span>{userName}</span> : null}
                 <input type="text" {...register('title')} placeholder="Insira um título para o seu comentário"/>
             </div>
 
             <div className="setCommentBody">
-                <textarea {...register('description')} ></textarea>
+                <textarea {...register('comment')} ></textarea>
                 <input {...register('img')} type="text" placeholder="Insira aqui um link para sua imagem" />
                 <Rating initialValue={5} transition={true} onClick={setRatingFunction} />
             </div>

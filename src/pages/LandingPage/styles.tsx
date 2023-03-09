@@ -45,6 +45,7 @@ export const StyledMain = styled.main`
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
+    gap: 30px;
 
     p {
       background-color: aquamarine;
@@ -128,7 +129,7 @@ export const StyledMain = styled.main`
       padding-left: 17rem;
     }
     .aboutUs__wrapper {
-      width: 90%;
+      width: 100%;
     }
     .cards__wrapper {
       .inside__cardsWrapper {

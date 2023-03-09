@@ -7,6 +7,10 @@ const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  background-color: aliceblue;
+  padding-top: 5rem;
 
   @media (min-width: 750px) {
     display: grid;
@@ -26,8 +30,6 @@ const StyledUl = styled.ul`
 
   @media (max-width: 550px) {
     padding-bottom: 10px;
-    padding-right: 10px;
-    margin-right: -10px;
 
     li {
       min-width: 300px;
@@ -79,7 +81,18 @@ const StyledUl = styled.ul`
         width: 100%;
         padding: 5px 10px;
       }
+
+      button:hover {
+        filter: brightness(1.2);
+        transition: 0.3s;
+      }
     }
+  }
+
+  li:hover {
+    filter: brightness(0.9);
+    transition: 0.3s;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.9);
   }
 `;
 

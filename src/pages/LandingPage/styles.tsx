@@ -27,6 +27,7 @@ export const StyledMain = styled.main`
     flex-direction: column;
     background-repeat: no-repeat;
     padding-left: 1rem;
+    gap: 90px;
     h1 {
       font-size: 2.5rem;
     }

@@ -50,16 +50,35 @@ const StatesCard = () => {
                 }}>Ver informações sobre {state.name}</button>
               </div>
             </div>
+<<<<<<< HEAD
+          </div>
+          
+        </li>
+      ))}
+      {
+            modalIsOpen && <ModalCreateComment stateId={modalState}/>
+          
+          }
+=======
           </li>
         ))}
         {
           modalIsOpen && <ModalCreateComment stateId={modalState} />
+>>>>>>> bcf1654b51304f0ae405fd6dae8e9a4efad522ae
 
         }
 
+<<<<<<< HEAD
+          
+
+          
+    </StyledUl>
+      </>
+=======
         {commentsModalStatus ? <UsersComments /> : null}
       </StyledUl>
     </>
+>>>>>>> bcf1654b51304f0ae405fd6dae8e9a4efad522ae
   );
 };
 

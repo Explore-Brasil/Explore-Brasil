@@ -2,27 +2,32 @@ import styled from "styled-components";
 
 export const StyledCommentsDiv = styled.div`
 
-    min-width: 100vw;
+min-width: 100vw;
     min-height: 100vh;
     max-height: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
+    top: 0px;
+    left: 0px;
     display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* -webkit-box-align: center; */
     align-items: center;
+    /* -webkit-box-pack: center; */
     justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 6px;
-    z-index: 2;
-    overflow-y: scroll;
+    
+    
+    .divContainer {
+        overflow-y: scroll;
+    max-height: 70vh;
+    max-width: 70vw;
+    }
 
     div {
-    width: 90%;
+    width: 40%;
     margin: 0 auto;
     padding: 10px;
     background-color: aliceblue;
+    
     }
 
 .userReviewNav {
@@ -61,9 +66,7 @@ export const StyledCommentsDiv = styled.div`
     } 
     
 }
-.divContainer {
-    margin-top: 50%;
-}
+
 .userReviewContainer {
     width: 80%;
     border: 1px solid #49a191;

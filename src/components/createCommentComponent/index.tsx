@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form"
 import { StatesContext } from '../../providers/Statescontext'
 import { Usercontext } from '../../providers/Usercontext'
 import { FormCreateComent } from './style'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 interface ICreateCommentProps {
   statesId: number;
   }
@@ -42,17 +45,17 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
     const imgOutput = imageRegex.test(data.img)
     const user = localStorage.getItem('@ID') || ''
     if (imgOutput === false && data.img !== '') {
-      console.log('imagem não valida ~subtituir por toast')
+      toast.error('Tipo de imagem não é válida.')
       return
     }
 
 
     if (data.title === '' || data.description === '') {
-      console.log('título ou descricão nao podem estar vazios ~substituir por toast')
+      toast.error('Os campos precisam estar preenchidos')
     } else {
       createPost({ ...data, statesId: statesId, user: userName, avaliation: rating, userId: user })
+      toast.success('Comentário Enviado.')
       setModalIsOpen(false)
-      console.log('colocar toast de sucesso e de falha')
     }
 
 
@@ -77,6 +80,7 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
       </div>
 
       <button type="submit">Comentar</button>
+      <ToastContainer/>
 
 
 

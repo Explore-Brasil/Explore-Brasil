@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { Usercontext } from "../../providers/Usercontext";
 import { StyledRegisterForm } from "./styles";
 import image from "../../assets/Logo_Explore_Br-registerPage.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface IRegisterData {
   email: string;
@@ -78,6 +80,8 @@ const RegisterForm = () => {
             {...register("passwordConfirmation")}
           />
           <button type="submit">Cadastrar</button>
+          <ToastContainer/>
+
         </form>
       </div>
     </StyledRegisterForm>

@@ -53,6 +53,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
     const [posts, setPosts] = useState(Array<IPosts>)
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [comments, setComments] = useState(Array<IComments>)
+    const [commentsModalStatus, setCommentsModalStatus] = useState(false)
 
     useEffect(() => {
         const RenderStates = async () => {
@@ -88,6 +89,12 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
           const filteredComments = response.data.filter((comment: IComments) => comment.statesId === stateId);
           console.log(filteredComments)
           setComments(filteredComments);
+
+          if(filteredComments.length > 0) {
+            setCommentsModalStatus(true)
+          } else {
+            console.log('Esse estado ainda não tem comentários, favor adicione um ~substituir por toast')
+          }
         } catch (error) {
           console.log(error);
         }
@@ -96,7 +103,7 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
 
     return (
         <StatesContext.Provider
-            value={{ states, createPost, setModalIsOpen, modalIsOpen, comments, setComments, renderAllPosts }}
+            value={{ states, createPost, setModalIsOpen, modalIsOpen, comments, setComments, renderAllPosts, setCommentsModalStatus, commentsModalStatus }}
         >
             {children}
 

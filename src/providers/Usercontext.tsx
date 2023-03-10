@@ -65,7 +65,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
       toast.success("Bem vindo")
       navigate("/dashboard");
     } catch (error) {
-      toast("email ou senha invalidos")
+      toast.error("email ou senha invalidos")
     }
   };
 

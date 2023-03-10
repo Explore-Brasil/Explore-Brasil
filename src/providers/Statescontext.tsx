@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../services/api";
+import {toast} from "react-toastify"
 
 interface IStatesContext {
     states: IStates[]
@@ -77,9 +78,9 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
                 }
             })
             setPosts([...posts, response.data])
-            console.log('comentário criado com sucesso ~inserir toast')
+            toast.success("Comentario criado")
         } catch (error) {
-            console.log(error)
+            toast.error("Erro")
         }
     }
 

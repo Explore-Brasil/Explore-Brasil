@@ -4,19 +4,22 @@ import { useForm } from "react-hook-form"
 import { StatesContext } from '../../providers/Statescontext'
 import { Usercontext } from '../../providers/Usercontext'
 import { FormCreateComent } from './style'
+import { toast } from "react-toastify"
+
+
 interface ICreateCommentProps {
   statesId: number;
-  }
-  
-  interface ICreateCommentData {
-    title: string;
-    description: string;
-    comment: string;
-    img: string;
-  }
+}
+
+interface ICreateCommentData {
+  title: string;
+  description: string;
+  comment: string;
+  img: string;
+}
 
 
-export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
+export const CreateComment = ({ statesId }: ICreateCommentProps) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm<ICreateCommentData>()
 
@@ -37,22 +40,21 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
   }, []);
 
 
-  const commentFunction = (data: ICreateCommentData)  => {
+  const commentFunction = (data: ICreateCommentData) => {
     const imageRegex = /\.(jpeg|jpg|gif|png|svg)$/;
     const imgOutput = imageRegex.test(data.img)
     const user = localStorage.getItem('@ID') || ''
     if (imgOutput === false && data.img !== '') {
-      console.log('imagem não valida ~subtituir por toast')
+      toast.error("tipo de imagem invalida")
       return
     }
 
 
     if (data.title === '' || data.description === '') {
-      console.log('título ou descricão nao podem estar vazios ~substituir por toast')
+      toast.error("Titulo e descrição não podem estar vazios")
     } else {
       createPost({ ...data, statesId: statesId, user: userName, avaliation: rating, userId: user })
       setModalIsOpen(false)
-      console.log('colocar toast de sucesso e de falha')
     }
 
 

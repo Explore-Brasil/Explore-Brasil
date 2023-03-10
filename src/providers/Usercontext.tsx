@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import {toast} from "react-toastify"
 
 interface IUserContext {
   registerUser: (regiterData: IRegisterData) => Promise<void>;
@@ -48,9 +49,10 @@ export const UserProvider = ({ children }: IUserContextProps) => {
       const response = await api.post("/users", regiterData);
       console.log("usuario cadastrado ~trocar por toast");
       localStorage.setItem("@USER", response.data.user.name);
+      toast.success("Usuario criado com sucesso")
       navigate("/login");
     } catch (error) {
-      console.log(error, "~trocar por toast");
+      toast.error('email já existente')
     }
   };
 
@@ -60,10 +62,10 @@ export const UserProvider = ({ children }: IUserContextProps) => {
       localStorage.setItem("@TOKEN", response.data.accessToken);
       localStorage.setItem("@ID", response.data.user.id);
       setUser(response.data.user);
-      console.log('colocar toast de sucesso e de erro')
+      toast.success("Bem vindo")
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      toast("email ou senha invalidos")
     }
   };
 
@@ -79,6 +81,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
   };
   const logOut = () => {
     localStorage.clear();
+    toast.success("Usuario deslogado")
     navigate("/");
   };
 

@@ -6,6 +6,7 @@ import StyledDivModal from "./styles"
 
 interface ModalCreateCommentProps {
     stateId: number;
+    //randomComment
   }
 
 const ModalCreateComment = ({ stateId } : ModalCreateCommentProps) => {

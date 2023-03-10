@@ -29,7 +29,7 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
   useEffect(() => {
     async function fetchData() {
-      const tempName = await getUserName();
+      const tempName = await getUserName() ?? '';
       setUserName(tempName);
     }
     fetchData();

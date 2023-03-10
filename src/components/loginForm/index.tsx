@@ -7,6 +7,8 @@ import { ILoginUserData, Usercontext } from "../../providers/Usercontext";
 import { useContext } from "react";
 import { StyledLoginForm } from "./styles";
 import image from "../../assets/Logo_Explore_Br-registerPage.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const schema = yup.object({
   email: yup
@@ -52,6 +54,7 @@ export const LoginForm = () => {
           <span>Ainda não tem conta?</span>
           <Link to="/register">Registrar-se agora</Link>
         </div>
+        <ToastContainer/>
       </form>
     </StyledLoginForm>
   );

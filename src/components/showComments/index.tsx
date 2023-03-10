@@ -8,16 +8,13 @@ export const UsersComments = () => {
     const { comments, setCommentsModalStatus } = useContext(StatesContext)
 
     return (
-
         <StyledCommentsDiv>
-
             <div className="divContainer">
                 <div className="userReviewNav">
                     <span>Comentários de quem já foi :</span>
                     <button onClick={() => setCommentsModalStatus(false)}>X</button>
 
                 </div>
-
                 {comments ? comments.map(e => {
                     return (
                         <div className="userReviewContainer">
@@ -34,9 +31,7 @@ export const UsersComments = () => {
                     );
                 }) : null}
 
-                </div>
-
+            </div>
         </StyledCommentsDiv>
-        
     )
 }

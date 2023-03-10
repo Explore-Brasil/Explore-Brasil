@@ -4,17 +4,12 @@ import { useContext } from "react";
 import { Usercontext } from "../../providers/Usercontext";
 import {
   useLocation,
-  useNavigate,
-  useParams,
-  useRoutes,
+
 } from "react-router-dom";
 
 export const HeaderComponent = () => {
   const { loginPage, registerPage, mainPage, logOut, user } =
     useContext(Usercontext);
-  // const user = localStorage.getItem("@ID");
-  // const userName = localStorage.getItem("@USER");
-  const navigate = useNavigate();
   const params = useLocation();
 
   return (

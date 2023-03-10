@@ -20,7 +20,6 @@ const StatesCard = () => {
       setModalIsOpen(true);
       return;
     } else {
-      console.log('ola mundo');
     }
   }
 
@@ -40,13 +39,11 @@ const StatesCard = () => {
               </div>
               <div className="button__wrapper">
                 <button id={(state.id).toString()} type="button" onClick={(event) => {
-                  console.log('chamou botão')
                   setModalState(state.id)
                   findstate(event)
                 }}>Adicionar comentário</button>
                 <button id={state.id.toString()} onClick={(event) => {
                   renderAllPosts(parseInt(event.currentTarget.id))
-                  console.log('click')
                 }}>Ver informações sobre {state.name}</button>
               </div>
             </div>

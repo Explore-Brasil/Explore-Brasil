@@ -10,10 +10,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <GlobalStyled />
     <BrowserRouter>
       <Providers>
-        
         <App />
       </Providers>
     </BrowserRouter>
-    
+
   </React.StrictMode>,
 )

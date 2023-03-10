@@ -1,5 +1,5 @@
 import { UserProvider } from './Usercontext';
-import {StatesProvider} from "./Statescontext"
+import {StatesProvider} from "./Statescontext";
 
 interface IUserContextProps {
   children: React.ReactNode;

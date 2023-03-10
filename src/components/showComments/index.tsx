@@ -1,21 +1,29 @@
 import { useContext } from "react"
+import { Rating } from "react-simple-star-rating"
 import { StatesContext } from "../../providers/Statescontext"
+import { StyledCommentsDiv } from "./styles"
 
 export const UsersComments = () => {
 
-    const { comments, setModalIsOpen } = useContext(StatesContext)
+    const { comments, setCommentsModalStatus } = useContext(StatesContext)
 
     return (
-        <>
-            <span>Comentários de quem já foi</span>
-            <button>X</button>
+
+        <StyledCommentsDiv>
+
+            <div className="userReviewNav">
+                <span>Comentários de quem já foi</span>
+                <button onClick={() => setCommentsModalStatus(false)}>X</button>
+
+            </div>
+
             {comments ? comments.map(e => {
                 return (
                     <div className="userReviewContainer">
                         <div className="userReviewContainer--Header">
                             <h1>{e.title}</h1>
                             <span>Comentário de: {e.user}</span>
-                            <span>Avaliação {e.avaliation}</span>
+                            <span>Avaliação <Rating initialValue={e.avaliation} readonly={true} size={18} /></span>
                         </div>
                         <div className="userReviewContainer--Body">
                             <span>{e.comment}</span>
@@ -24,6 +32,8 @@ export const UsersComments = () => {
                     </div>
                 );
             }) : null}
-        </>
+
+        </StyledCommentsDiv>
+        
     )
 }

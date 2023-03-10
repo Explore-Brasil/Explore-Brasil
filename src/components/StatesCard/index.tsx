@@ -9,7 +9,7 @@ interface IEventprops extends MouseEvent{
 }
 
 const StatesCard = () => {
-  const { states, renderAllPosts } = useContext(StatesContext);
+  const { states, renderAllPosts, setCommentsModalStatus, commentsModalStatus } = useContext(StatesContext);
   const {modalIsOpen, setModalIsOpen} = useContext(StatesContext)
   const [modalState, setModalState] = useState(0)
 
@@ -25,7 +25,7 @@ const StatesCard = () => {
 
   return (
       <>
-      <UsersComments />
+      
     <StyledUl>
       {states.map((state) => (
         <li key={state.id}>
@@ -55,7 +55,17 @@ const StatesCard = () => {
       {
             modalIsOpen && <ModalCreateComment stateId={modalState}/>
           
+<<<<<<< HEAD
           }    
+=======
+          }
+
+          {commentsModalStatus ? <UsersComments /> : null}
+
+          
+
+          
+>>>>>>> 871bc6ce9d4f479ae69022a623397e295915d9eb
     </StyledUl>
       </>
   );

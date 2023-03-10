@@ -73,7 +73,7 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
       <div className="setCommentBody">
         <textarea {...register('comment')} ></textarea>
         <input {...register('img')} type="text" placeholder="Insira aqui um link para sua imagem" />
-        <Rating initialValue={5} transition={true} onClick={setRatingFunction} />
+        <Rating initialValue={5} transition={true} size={18} onClick={setRatingFunction} />
       </div>
 
       <button type="submit">Comentar</button>

@@ -11,7 +11,6 @@ export const StyledMain = styled.main`
 
   color: white;
   margin: 0;
-  /* background-color: aliceblue; */
 
   .title__wrapper {
     background-image: linear-gradient(

@@ -10,16 +10,14 @@ min-width: 100vw;
     left: 0px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.5);
-    /* -webkit-box-align: center; */
     align-items: center;
-    /* -webkit-box-pack: center; */
     justify-content: center;
     
     
     .divContainer {
         overflow-y: scroll;
-    max-height: 70vh;
-    max-width: 70vw;
+    max-height: 90vh;
+    width: 90vw;
     }
 
     div {
@@ -47,6 +45,8 @@ min-width: 100vw;
     padding: 5px 10px;
     border-radius: 50%;
     transition: 0.5s;
+    top: 10px;
+    right: 10px;
     }
     button:hover {
     background-color: #9e94d4;
@@ -68,7 +68,7 @@ min-width: 100vw;
 }
 
 .userReviewContainer {
-    width: 80%;
+    width: 95%;
     border: 1px solid #49a191;
     padding: 5px;
     display: flex;

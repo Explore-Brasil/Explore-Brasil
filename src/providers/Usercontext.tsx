@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 interface IUserContext {
   registerUser: (regiterData: IRegisterData) => Promise<void>;
@@ -11,7 +11,7 @@ interface IUserContext {
   registerPage: () => void;
   mainPage: () => void;
   user: IUser | undefined;
-  getUserName: () => Promise<string | undefined>
+  getUserName: () => Promise<string | undefined>;
 }
 
 interface IUserContextProps {
@@ -101,10 +101,9 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     const selectedUser = allUsers.data.find(
       (user) => user.id === parseInt(userId!)
     );
-  
+
     return selectedUser?.name;
   };
-
 
   return (
     <Usercontext.Provider

@@ -1,9 +1,7 @@
 import { HeaderComponent } from "../../components/Header-Componet/Header-Component";
 import { LoginForm } from "../../components/loginForm";
 
-export const LoginPage = () => {
-
-
+const LoginPage = () => {
     return(
         <>
         <HeaderComponent/>
@@ -11,3 +9,5 @@ export const LoginPage = () => {
         </>
     )
 }
+
+export default LoginPage

@@ -17,7 +17,7 @@ interface ICreateCommentProps {
 
 export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm<ICreateCommentData>()
 
   const { createPost, setModalIsOpen } = useContext(StatesContext)
   const { getUserName } = useContext(Usercontext)
@@ -63,7 +63,7 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
 
   return (
-    <form onSubmit={handleSubmit(commentFunction as ICreateCommentData)}>
+    <form onSubmit={handleSubmit(commentFunction)}>
       <div className="setCommentHeader">
         {userName != '' ? <span>{userName}</span> : null}
         <input type="text" {...register('title')} placeholder="Insira um título para o seu comentário" />

@@ -6,7 +6,9 @@ interface IStatesContext {
     createPost: (postData: IPosts) => Promise<void>
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     modalIsOpen: boolean
-
+    comments: IComments[]
+    setComments: React.Dispatch<React.SetStateAction<IComments[]>>
+    renderAllPosts:  (stateId: number) => Promise<void>
 }
 
 interface IStatesContextProps {
@@ -20,14 +22,26 @@ interface IStates {
     img: string
 }
 
-interface IPosts{
-    id: number
+interface IPosts {
+    id?: string | undefined;
     user: string
     title: string
     comment: string
     img: string
     statesId: number
     avaliation: number
+    userId: string 
+}
+
+interface IComments {
+    title: string
+    comment: string
+    img: string
+    statesId: number
+    user: string
+    avaliation: number
+    userId: string
+    id: string
 }
 
 
@@ -38,8 +52,10 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
     const [states, setSates] = useState(Array<IStates>)
     const [posts, setPosts] = useState(Array<IPosts>)
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [comments, setComments] = useState(Array<IComments>)
+    const [commentsModalStatus, setCommentsModalStatus] = useState(false)
 
-    useEffect(()=> {
+    useEffect(() => {
         const RenderStates = async () => {
             try {
                 const resposnse = await api.get('/states')
@@ -50,13 +66,13 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
         RenderStates()
     }, [])
 
-    const createPost = async (postData: IPosts)=> {
+    const createPost = async (postData: IPosts) => {
         const token = localStorage.getItem('@TOKEN')
         try {
             const response = await api.post('/comments', postData, {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             })
             setPosts([...posts, response.data])
             console.log('comentário criado com sucesso ~inserir toast')
@@ -65,12 +81,29 @@ export const StatesProvider = ({ children }: IStatesContextProps) => {
         }
     }
 
-    
+    const renderAllPosts = async (stateId:number) => {
+        console.log('chamou render all')
+        console.log(stateId,typeof stateId, 'stateID é isso ai')
+        try {
+          const response = await api.get("/comments");
+          const filteredComments = response.data.filter((comment: IComments) => comment.statesId === stateId);
+          console.log(filteredComments)
+          setComments(filteredComments);
+
+          if(filteredComments.length > 0) {
+            setCommentsModalStatus(true)
+          } else {
+            console.log('Esse estado ainda não tem comentários, favor adicione um ~substituir por toast')
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 
     return (
         <StatesContext.Provider
-            value={{states, createPost, setModalIsOpen, modalIsOpen}}
+            value={{ states, createPost, setModalIsOpen, modalIsOpen, comments, setComments, renderAllPosts, setCommentsModalStatus, commentsModalStatus }}
         >
             {children}
 

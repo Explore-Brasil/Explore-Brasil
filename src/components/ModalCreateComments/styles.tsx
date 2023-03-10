@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StyledDivModal = styled.div`
-  background-color: rgba(114, 114, 114, 0.2);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,35 +9,37 @@ const StyledDivModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  div {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
 
-    h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
+  & > div {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 4px;
+  }
 
-    p {
-      font-size: 0.9rem;
-      margin-bottom: 30px;
-    }
+  & h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
 
-    button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: #333;
-    }
+  & p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  & button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
   }
 `;
 

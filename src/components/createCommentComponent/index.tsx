@@ -63,8 +63,6 @@ export const CreateComment = ({ statesId }: ICreateCommentProps) => {
     setRating(data)
   }
 
-
-
   return (
     <FormCreateComent onSubmit={handleSubmit(commentFunction)}>
       <div className="setCommentHeader">

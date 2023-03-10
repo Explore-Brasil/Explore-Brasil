@@ -10,7 +10,7 @@ interface IUserContext {
   registerPage: () => void;
   mainPage: () => void;
   user: IUser | undefined;
-  getUserName: () => Promise<any>
+  getUserName: () => Promise<string | undefined>
 }
 
 interface IUserContextProps {
@@ -92,14 +92,14 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     }
   }, [])
 
-  const getUserName = async () => {
+  const getUserName = async (): Promise<string | undefined> => {
     const userId = localStorage.getItem("@ID");
-    const allUsers = await api.get("/users");
+    const allUsers = await api.get<Array<IUser>>("/users");
     const selectedUser = allUsers.data.find(
-      (user) => user.id === parseInt(userId)
+      (user) => user.id === parseInt(userId!)
     );
-
-    return selectedUser.name;
+  
+    return selectedUser?.name;
   };
 
 

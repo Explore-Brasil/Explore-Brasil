@@ -9,6 +9,8 @@ interface IStatesContext {
     comments: IComments[]
     setComments: React.Dispatch<React.SetStateAction<IComments[]>>
     renderAllPosts:  (stateId: number) => Promise<void>
+    setCommentsModalStatus: React.Dispatch<React.SetStateAction<boolean>>
+    commentsModalStatus: boolean
 }
 
 interface IStatesContextProps {

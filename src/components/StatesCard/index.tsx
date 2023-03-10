@@ -4,50 +4,53 @@ import StyledUl from "./styles";
 import ModalCreateComment from "../ModalCreateComments"
 import { UsersComments } from "../showComments";
 
-interface IEventprops extends MouseEvent{
+interface IEventprops extends React.MouseEvent<HTMLInputElement, MouseEvent> {
   target: HTMLInputElement
 }
 
 const StatesCard = () => {
-  const { states, renderAllPosts, setCommentsModalStatus, commentsModalStatus } = useContext(StatesContext);
-  const {modalIsOpen, setModalIsOpen} = useContext(StatesContext)
+  const { states, renderAllPosts, commentsModalStatus } = useContext(StatesContext);
+  const { modalIsOpen, setModalIsOpen } = useContext(StatesContext)
   const [modalState, setModalState] = useState(0)
 
-  const findstate = (event: IEventprops) => {
-    const stateFound = states.find((state) => state.id === +event.target.id )
-    if(stateFound){
-      setModalIsOpen(true)
-      return
+  const findstate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const inputElement = event.target as HTMLInputElement;
+    const stateFound = states.find((state) => state.id === +inputElement.id)
+    if (stateFound) {
+      setModalIsOpen(true);
+      return;
     } else {
-      console.log('ola mundo')
+      console.log('ola mundo');
     }
   }
 
   return (
-      <>
-      
-    <StyledUl>
-      {states.map((state) => (
-        <li key={state.id}>
-          <div className="img__wrapper">
-            <img src={state.img} alt={state.name} />
-          </div>
-          <div className="lower__wrapper">
-            <div className="info__wrapper">
-              <h2>{state.name}</h2>
-              <p>{state.info}</p>
+    <>
+
+      <StyledUl>
+        {states.map((state) => (
+          <li key={state.id}>
+            <div className="img__wrapper">
+              <img src={state.img} alt={state.name} />
             </div>
-            <div className="button__wrapper">
-              <button id={(state.id).toString()} type="button" onClick={(event)=> {
-                console.log('chamou botão')
-                setModalState(state.id)
-                findstate(event)
+            <div className="lower__wrapper">
+              <div className="info__wrapper">
+                <h2>{state.name}</h2>
+                <p>{state.info}</p>
+              </div>
+              <div className="button__wrapper">
+                <button id={(state.id).toString()} type="button" onClick={(event) => {
+                  console.log('chamou botão')
+                  setModalState(state.id)
+                  findstate(event)
                 }}>Adicionar comentário</button>
-              <button id={(parseInt(state.id))} onClick={(event) => {
-                renderAllPosts(parseInt(event.target.id))
-                console.log('click')
-              }}>Ver informações sobre {state.name}</button>
+                <button id={state.id.toString()} onClick={(event) => {
+                  renderAllPosts(parseInt(event.currentTarget.id))
+                  console.log('click')
+                }}>Ver informações sobre {state.name}</button>
+              </div>
             </div>
+<<<<<<< HEAD
           </div>
           
         </li>
@@ -56,14 +59,26 @@ const StatesCard = () => {
             modalIsOpen && <ModalCreateComment stateId={modalState}/>
           
           }
+=======
+          </li>
+        ))}
+        {
+          modalIsOpen && <ModalCreateComment stateId={modalState} />
+>>>>>>> bcf1654b51304f0ae405fd6dae8e9a4efad522ae
 
-          {commentsModalStatus ? <UsersComments /> : null}
+        }
 
+<<<<<<< HEAD
           
 
           
     </StyledUl>
       </>
+=======
+        {commentsModalStatus ? <UsersComments /> : null}
+      </StyledUl>
+    </>
+>>>>>>> bcf1654b51304f0ae405fd6dae8e9a4efad522ae
   );
 };
 

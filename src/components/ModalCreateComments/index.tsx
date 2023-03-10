@@ -14,7 +14,7 @@ const ModalCreateComment = ({ stateId } : ModalCreateCommentProps) => {
     return (
         <StyledDivModal>
             <div>
-                <button type="button" onClick={() => setModalIsOpen(false)}>X</button>
+                <button type="button" className="btnClose" onClick={() => setModalIsOpen(false)}>X</button>
 
                 <h2>Adicione informações sobre suas viagens, comentarios sobre lugares</h2>
                 <p>Você é livre para compartilhar com a comunidade</p>

@@ -55,9 +55,6 @@ const StatesCard = () => {
       {
             modalIsOpen && <ModalCreateComment stateId={modalState}/>
           
-<<<<<<< HEAD
-          }    
-=======
           }
 
           {commentsModalStatus ? <UsersComments /> : null}
@@ -65,7 +62,6 @@ const StatesCard = () => {
           
 
           
->>>>>>> 871bc6ce9d4f479ae69022a623397e295915d9eb
     </StyledUl>
       </>
   );

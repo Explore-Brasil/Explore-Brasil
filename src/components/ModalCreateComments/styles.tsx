@@ -8,6 +8,7 @@ const StyledDivModal = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
@@ -22,13 +23,16 @@ const StyledDivModal = styled.div`
   }
 
   & h2 {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 16px;
+    color : #02C39A;
+    text-align: center;
   }
 
   & p {
     font-size: 16px;
     margin-bottom: 24px;
+    text-align: center;
   }
 
   & button {
@@ -40,6 +44,11 @@ const StyledDivModal = styled.div`
     font-size: 24px;
     color: #666;
     cursor: pointer;
+    transition: 0.5s;
+  }
+  & .btnClose:hover {
+    color: red;
+    transform: rotate(180deg);
   }
 `;
 

@@ -11,27 +11,30 @@ export const UsersComments = () => {
 
         <StyledCommentsDiv>
 
-            <div className="userReviewNav">
-                <span>Comentários de quem já foi</span>
-                <button onClick={() => setCommentsModalStatus(false)}>X</button>
+            <div className="divContainer">
+                <div className="userReviewNav">
+                    <span>Comentários de quem já foi :</span>
+                    <button onClick={() => setCommentsModalStatus(false)}>X</button>
 
-            </div>
+                </div>
 
-            {comments ? comments.map(e => {
-                return (
-                    <div className="userReviewContainer">
-                        <div className="userReviewContainer--Header">
-                            <h1>{e.title}</h1>
-                            <span>Comentário de: {e.user}</span>
-                            <span>Avaliação <Rating initialValue={e.avaliation} readonly={true} size={18} /></span>
+                {comments ? comments.map(e => {
+                    return (
+                        <div className="userReviewContainer">
+                            <div className="userReviewContainer--Header">
+                                <h1>{e.title}</h1>
+                                <span className="nameComent">Comentário de: <b className="nameUser">{e.user}</b></span>
+                                <span>Avaliação <Rating initialValue={e.avaliation} readonly={true} size={18} /></span>
+                            </div>
+                            <div className="userReviewContainer--Body">
+                                <span>{e.comment}</span>
+                                <img src={e.img} alt="" />
+                            </div>
                         </div>
-                        <div className="userReviewContainer--Body">
-                            <span>{e.comment}</span>
-                            <img src={e.img} alt="" />
-                        </div>
-                    </div>
-                );
-            }) : null}
+                    );
+                }) : null}
+
+                </div>
 
         </StyledCommentsDiv>
         

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { StatesContext } from '../../providers/Statescontext'
 import { Usercontext } from '../../providers/Usercontext'
+import { FormCreateComent } from './style'
 interface ICreateCommentProps {
   statesId: number;
   }
@@ -63,14 +64,18 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
 
   return (
+<<<<<<< HEAD
+    <FormCreateComent onSubmit={handleSubmit(commentFunction as ICreateCommentData)}>
+=======
     <form onSubmit={handleSubmit(commentFunction)}>
+>>>>>>> main
       <div className="setCommentHeader">
         {userName != '' ? <span>{userName}</span> : null}
         <input type="text" {...register('title')} placeholder="Insira um título para o seu comentário" />
       </div>
 
       <div className="setCommentBody">
-        <textarea {...register('comment')} ></textarea>
+        <textarea {...register('comment')} placeholder='Seu comentário aqui...'></textarea>
         <input {...register('img')} type="text" placeholder="Insira aqui um link para sua imagem" />
         <Rating initialValue={5} transition={true} size={18} onClick={setRatingFunction} />
       </div>
@@ -79,6 +84,6 @@ export const CreateComment =  ({ statesId }: ICreateCommentProps) => {
 
 
 
-    </form>
+    </FormCreateComent>
   )
 }
